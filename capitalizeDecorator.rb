@@ -1,9 +1,7 @@
 require_relative 'baseDecorator'
 
 class CapitalizeDecorator < BaseDecorator
-    def class_name
-       puts @nameable.upcase
-    end
+  def correct_name
+    puts @nameable.upcase
+  end
 end
-
-
