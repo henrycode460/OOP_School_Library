@@ -17,7 +17,7 @@ class Person < Nameable
   end
 
   def correct_name
-    puts @name
+    @name
   end
 
   private
