@@ -10,6 +10,3 @@ class BaseDecorator < Nameable
     @nameable.correct_name
   end
 end
-
-try = BaseDecorator.new('joseph')
-try.correct_name
