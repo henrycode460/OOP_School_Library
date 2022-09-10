@@ -1,8 +1,9 @@
+require_relative 'student'
 class Classroom
   attr_accessor :label, :students
 
   def initialize(label)
-    @lable = label
+    @label = label
     @students = []
   end
 
