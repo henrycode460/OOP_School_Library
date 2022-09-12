@@ -148,6 +148,8 @@ class App
     end
   end
 
+
+
   # The Run method
 
   def run
@@ -155,6 +157,7 @@ class App
     selection = 0
     while selection != 7
       display_menu
+     
       puts
       print 'Please choose an option by entering a number: '
       selection = gets.chomp.strip.to_i
