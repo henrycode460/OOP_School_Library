@@ -7,6 +7,7 @@ require_relative 'book_rental'
 require_relative 'create_student'
 
 
+
 class App < CreateStudent
   attr_reader :books, :person
 
@@ -67,24 +68,7 @@ class App < CreateStudent
 # create student
 
 
-  # create teacher
-  def create_teacher
-    puts 'Enter teacher\'s record'
-    print 'Name: '
-    name = gets.chomp.strip.capitalize
-    puts
-    print 'Specialization: '
-    specialization = gets.chomp.strip.capitalize
-    print 'Age: '
-    age = gets.chomp.strip.to_i
-    while age <= 0 || age >= 150
-      print 'Please enter a valid age number between (1 - 100):'
-      age = gets.chomp.strip.to_i
-    end
-    @people << Teacher.new(Random.rand(1..1000), age, specialization, name)
-    puts 'Teachers record created successfully!!!!'
-  end
-
+  
   
 
   # List all rentals for a given person id
