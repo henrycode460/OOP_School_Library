@@ -1,5 +1,7 @@
 require_relative 'app'
 require_relative 'choice_method'
+require_relative 'book_rental'
+require_relative 'create_student'
 
 def main
   app = App.new

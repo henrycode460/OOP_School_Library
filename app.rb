@@ -3,8 +3,11 @@ require_relative 'book'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'rental'
+require_relative 'book_rental'
+require_relative 'create_student'
 
-class App
+
+class App < CreateStudent
   attr_reader :books, :person
 
   def initialize
@@ -61,29 +64,8 @@ class App
     end
   end
 
-  # create student
+# create student
 
-  def create_student
-    puts 'Enter student information'
-    print 'Name: '
-    name = gets.chomp.strip.capitalize
-    print 'Age: '
-    age = gets.chomp.strip.to_i
-    while age <= 0 || age >= 150
-      print 'Please enter valid age in number between (1 - 100):'
-      age = gets.chomp.strip.to_i
-    end
-    print 'Has parent permission? Enter [Y/N]: '
-    permission = gets.chomp.strip.upcase
-    case permission
-    when 'Y'
-      permission = true
-    when 'N'
-      permission = false
-    end
-    @people << Student.new(Random.rand(1...1000), age, nil, name, parent_permission: permission)
-    puts 'Student created successfully!!!!!'
-  end
 
   # create teacher
   def create_teacher
@@ -103,31 +85,7 @@ class App
     puts 'Teachers record created successfully!!!!'
   end
 
-  # Create a rental
-  def create_rental_display # rubocop:disable Metrics/MethodLength
-    puts 'New Book Rentals. Select a book from the list below by number'
-    list_book_display
-    print 'enter the number for the book you want to rent: '
-    book_option = gets.chomp.to_i
-    while book_option.negative? || book_option >= @books.length
-      print "Please enter number between 0 - #{@books.length - 1} range: "
-      book_option = gets.chomp.to_i
-    end
-    book = "#{@books[book_option].title} By #{@books[book_option].author}"
-    puts 'Select a person from the following list by number (not ID)'
-    list_people_display
-    print 'Enter person number: '
-    person_option = gets.chomp.to_i
-    while person_option.negative? || person_option >= @people.length
-      print "Please enter number only between 0 -#{@people.length - 1}: "
-      person_option = gets.chomp.to_i
-    end
-    person = @people[person_option].id
-    print 'Enter date of booking: (yyyy/mm/dd): '
-    date = gets.chomp.strip
-    @rentals << Rental.new(date, person, book)
-    puts 'Book rental successful!!!!'
-  end
+  
 
   # List all rentals for a given person id
 
@@ -157,7 +115,6 @@ class App
     selection = 0
     while selection != 7
       display_menu
-     
       puts
       print 'Please choose an option by entering a number: '
       selection = gets.chomp.strip.to_i

@@ -1,3 +1,6 @@
+require_relative 'book_rental'
+require_relative 'create_student'
+
 module ChoiceMethods
     def options_list(option)
         case option
